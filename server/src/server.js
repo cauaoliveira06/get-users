@@ -1,0 +1,11 @@
+import http from 'node:http';
+import routerUser from './routers/user.router.js';
+// criado a casca do servidor = http.createServer().listen(3000);
+http.createServer((request,response) => { if (request.url === '/users') { return routerUser(request, response);}
+
+    response.writeHead(404, { 'content-type': 'application/json' });
+    response.end(JSON.stringify({ message: 'Página não encontrada!' }))
+
+}).listen(3000);
+
+
