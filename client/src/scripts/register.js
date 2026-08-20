@@ -1,6 +1,8 @@
 const email = document.querySelector('input[type="email"]');
 const password = document.querySelector('input[type="password"]');
 const button = document.querySelector('button');
+const checkbox = document.querySelector('input[type="checkbox"]');
+const labelPassword = document.querySelector('#placa');
 
 //validação  de usuario e senha nos inputs
 button.addEventListener('click', (event) => {
@@ -11,8 +13,8 @@ button.addEventListener('click', (event) => {
     const passwordValue = password.value;
 
     // validar se NÃO contem dados no input
-    if (!emailValue || !passwordValue){
-        alert ('Preencha todos os campos.');
+    if (!emailValue || !passwordValue) {
+        alert('Preencha todos os campos.');
         return;
     }
 
@@ -24,4 +26,17 @@ button.addEventListener('click', (event) => {
 
     // trocar a pagina para a pagina de login
     window.location.href = './login.html';
+});
+checkbox.addEventListener('change', () => {
+    const AttributeValue = password.getAttribute('type')
+    if (AttributeValue === 'password') {
+        password.setAttribute('type', 'text');
+        labelPassword.textContent = 'Ocultar senha'
+        return
+    }
+
+
+    password.setAttribute('type', 'password');
+    labelPassword.textContent = 'Mostrar senha'
+
 });
